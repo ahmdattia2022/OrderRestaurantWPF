@@ -1,0 +1,52 @@
+﻿<Window x:Class="OrderRestaurant.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OrderRestaurant"
+        Icon="/resource/icons8-restaurant-building-48.png"
+        mc:Ignorable="d"
+        Title="Order Restaurant" Height="469" Width="942" ResizeMode="NoResize">
+    <Grid Margin="0,-18,2,-1" HorizontalAlignment="Right" Width="930" Height="457" VerticalAlignment="Top">
+        <Grid.Background>
+            <ImageBrush ImageSource="/resource/background.jpg" Stretch="UniformToFill"/>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="79*"/>
+            <ColumnDefinition Width="107*"/>
+        </Grid.ColumnDefinitions>
+        <TextBox PreviewTextInput="CustomerTxt_PreviewTextInput"  x:Name="CustomerTxt" HorizontalAlignment="Left" Height="42" Margin="230,303,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222" FontSize="18" Background="{DynamicResource PrimaryHueMidForegroundBrush}" Grid.ColumnSpan="2" />
+        <Label FontWeight="Bold" x:Name="CustomerNameLbl" Content="Customer Name
+               " HorizontalAlignment="Left"  VerticalAlignment="Top" Height="42" Margin="30,303,0,0" FontSize="18" Foreground="#FFECECEC" Width="154"/>
+        <Button  x:Name="AddBtn"  Content="Add New Item" HorizontalAlignment="Right" VerticalAlignment="Top" Width="154" Margin="0,23,280,0" Height="46" FontSize="18" Click="AddBtn_Click" RenderTransformOrigin="1.518,-1.608" Grid.Column="1"/>
+        <DataGrid MouseDoubleClick="DataGrid_MouseDoubleClick_1" x:Name="DataGrid"  AutoGenerateColumns="False"  HorizontalAlignment="Left" Height="346" VerticalAlignment="Top" Width="415" Margin="101,81,0,0" Grid.Column="1" SelectionMode="Single" FontFamily="Sitka Subheading" FontSize="15" FontWeight="Medium" HeadersVisibility="Column">
+
+            <!--Font color / style of column-->
+            <DataGrid.Resources>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="Background" Value="AntiqueWhite"/>
+                    <Setter Property="FontWeight" Value="SemiBold"/>
+                    <Setter Property="BorderThickness" Value="0,0,1,2"/>
+                    <Setter Property="BorderBrush" Value="Black"/>
+
+                </Style>
+            </DataGrid.Resources>
+            <!--Column headers-->
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Item" Binding="{Binding Item}" Width="*" />
+                <DataGridTextColumn Header="Price" Binding="{Binding Price}" Width="50"/>
+                <DataGridTextColumn Header="Amount" Binding="{Binding Amount}" Width="100"/>
+                <DataGridTextColumn Header="Total Price" Binding="{Binding TotalPrice}" Width="100" />
+            </DataGrid.Columns>
+
+        </DataGrid>
+        <ComboBox BorderBrush="White" x:Name="ItemsCmb" HorizontalAlignment="Left" Margin="230,30,0,0" VerticalAlignment="Top" Width="222" RenderTransformOrigin="2.049,-0.798" Height="35" Background="{DynamicResource PrimaryHueMidForegroundBrush}" Grid.ColumnSpan="2"/>
+        <Label FontWeight="Bold" x:Name="CustomerNameLbl_Copy1" Content="Select Item" HorizontalAlignment="Left"  VerticalAlignment="Top" Height="42" Margin="30,23,0,0" FontSize="18" Foreground="#FFECECEC" Width="154" RenderTransformOrigin="0.481,0.048"/>
+        <Button x:Name="printBrn" Content="Print" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="275,375,0,0" Height="50" Click="printBrn_Click">
+
+        </Button>
+        <TextBox PreviewTextInput="AmountTxt_PreviewTextInput" x:Name="AmountTxt" HorizontalAlignment="Left" Height="42" Margin="230,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222" FontSize="18" FontWeight="Bold" Background="{DynamicResource PrimaryHueDarkForegroundBrush}" Grid.ColumnSpan="2"/>
+        <Label FontWeight="Bold" x:Name="AmountLbl" Content="Enter Amount" HorizontalAlignment="Left"  VerticalAlignment="Top" Height="42" Margin="30,90,0,0" FontSize="18" Foreground="#FFECECEC" Width="154" RenderTransformOrigin="0.481,0.048"/>
+        <Button Click="clearBtn_Click" x:Name="clearBtn"  Content="Cancel Order" HorizontalAlignment="Right" VerticalAlignment="Top" Width="154" Margin="0,23,91,0" Height="46" FontSize="18" RenderTransformOrigin="1.518,-1.608" Grid.Column="1" Background="#FF327A7A"/>
+    </Grid>
+</Window>
